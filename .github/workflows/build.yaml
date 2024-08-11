@@ -15,6 +15,11 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
 
+      # https://stackoverflow.com/questions/72707357/buildx-failed-with-error-cache-export-feature-is-currently-not-supported-for-d
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Cache Docker Image Layers
         uses: actions/cache@v2
         with:
